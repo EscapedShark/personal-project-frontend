@@ -1,0 +1,25 @@
+/* src/pages/auth/Login.module.css */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f0f2f5;
+  }
+  
+  .loginCard {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .loginCard :global(.ant-card-head-title) {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .loginButton {
+    width: 100%;
+  }

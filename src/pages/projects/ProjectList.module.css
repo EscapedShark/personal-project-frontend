@@ -1,0 +1,107 @@
+.container {
+  padding: 24px;
+  background-color: #ffffff;
+  min-height: calc(100vh - 64px);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.searchInput {
+  width: 300px;
+}
+
+/* Table styles */
+.container :global(.ant-table-wrapper) {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03),
+              0 1px 6px -1px rgba(0, 0, 0, 0.02),
+              0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.container :global(.ant-table-thead > tr > th) {
+  background: #fafafa;
+  font-weight: 500;
+  color: #262626;
+  padding: 16px;
+}
+
+.container :global(.ant-table-tbody > tr > td) {
+  padding: 16px;
+  color: #595959;
+}
+
+.container :global(.ant-table-tbody > tr:hover > td) {
+  background: #fafafa;
+}
+
+.container :global(.ant-table-cell a) {
+  color: #1890ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.container :global(.ant-table-cell a:hover) {
+  color: #40a9ff;
+}
+
+.container :global(.ant-tag) {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.container :global(.ant-space-item a) {
+  color: #1890ff;
+  text-decoration: none;
+}
+
+.container :global(.ant-space-item a:hover) {
+  color: #40a9ff;
+}
+
+/* Input and Button styles */
+.container :global(.ant-input-affix-wrapper) {
+  border-radius: 6px;
+  border-color: #d9d9d9;
+}
+
+.container :global(.ant-input-affix-wrapper:hover) {
+  border-color: #40a9ff;
+}
+
+.container :global(.ant-input-affix-wrapper:focus),
+.container :global(.ant-input-affix-wrapper-focused) {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.container :global(.ant-btn-primary) {
+  height: 32px;
+  padding: 0 16px;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+}
