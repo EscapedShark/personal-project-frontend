@@ -60,11 +60,11 @@ const UserProfile: React.FC = () => {
   const [form] = Form.useForm();
   
   const [userInfo, setUserInfo] = useState<UserInfo>({
-    name: '张三',
-    email: 'zhangsan@example.com',
-    phone: '13800138000',
-    position: '高级前端工程师',
-    department: '技术部',
+    name: 'John',
+    email: 'john@example.com',
+    phone: '+61 123456',
+    position: 'Senior Frontend Engineer',
+    department: 'Technical Department',
     avatar: '/default-avatar.png',
     skills: ['React', 'TypeScript', 'Node.js']
   });
@@ -73,15 +73,15 @@ const UserProfile: React.FC = () => {
     {
       id: 1,
       type: 'task',
-      project: '项目管理系统',
-      content: '完成了任务 "用户认证模块开发"',
+      project: 'Project Management System',
+      content: 'Completed task "User Authentication Module Development"',
       date: '2024-01-20'
     },
     {
       id: 2,
       type: 'project',
-      project: '数据分析平台',
-      content: '加入了新项目',
+      project: 'Data Analysis Platform',
+      content: 'Joined new project',
       date: '2024-01-18'
     }
   ];
@@ -105,14 +105,14 @@ const UserProfile: React.FC = () => {
 
       if (result.success && result.data) {
         setUserInfo(prev => ({ ...prev, ...result.data }));
-        message.success('个人信息更新成功');
+        message.success('Profile updated successfully');
         setEditMode(false);
       } else {
-        throw new Error(result.error || '更新失败');
+        throw new Error(result.error || 'Update failed');
       }
     } catch (error) {
       console.error('Profile update error:', error);
-      message.error(error instanceof Error ? error.message : '更新失败，请重试');
+      message.error(error instanceof Error ? error.message : 'Update failed, please try again');
     }
   };
 
@@ -122,11 +122,11 @@ const UserProfile: React.FC = () => {
       const isLt2M = file.size / 1024 / 1024 < 2;
   
       if (!isValidFileType) {
-        message.error('只能上传 JPG/PNG/GIF 格式的图片！');
+        message.error('Only JPG/PNG/GIF images are allowed!');
         return false;
       }
       if (!isLt2M) {
-        message.error('图片必须小于 2MB！');
+        message.error('Image must be less than 2MB!！');
         return false;
       }
   
@@ -152,14 +152,14 @@ const UserProfile: React.FC = () => {
           ...prev,
           avatar: result.url as string
         }));
-        message.success('头像上传成功');
+        message.success('Avatar uploaded successfully');
         return true;
       } else {
-        throw new Error(result.error || '上传失败');
+        throw new Error(result.error || 'Upload failed');
       }
     } catch (error) {
       console.error('Avatar upload error:', error);
-      message.error(error instanceof Error ? error.message : '头像上传失败，请重试');
+      message.error(error instanceof Error ? error.message : 'Avatar upload failed, please try again');
       return false;
     }
   };
@@ -195,8 +195,8 @@ const UserProfile: React.FC = () => {
         <Col span={12}>
           <Form.Item
             name="name"
-            label="姓名"
-            rules={[{ required: true, message: '请输入姓名' }]}
+            label="Name"
+            rules={[{ required: true, message: 'Please enter your name' }]}
           >
             <Input prefix={<UserOutlined />} />
           </Form.Item>
@@ -204,10 +204,10 @@ const UserProfile: React.FC = () => {
         <Col span={12}>
           <Form.Item
             name="email"
-            label="邮箱"
+            label="Email"
             rules={[
-              { required: true, message: '请输入邮箱' },
-              { type: 'email', message: '请输入有效的邮箱地址' }
+              { required: true, message: 'Please enter your email' },
+              { type: 'email', message: 'Please enter a valid email address' }
             ]}
           >
             <Input prefix={<MailOutlined />} />
@@ -219,8 +219,8 @@ const UserProfile: React.FC = () => {
         <Col span={12}>
           <Form.Item
             name="phone"
-            label="电话"
-            rules={[{ required: true, message: '请输入电话号码' }]}
+            label="Phone"
+            rules={[{ required: true, message: 'Please enter your phone number' }]}
           >
             <Input prefix={<PhoneOutlined />} />
           </Form.Item>
@@ -228,8 +228,8 @@ const UserProfile: React.FC = () => {
         <Col span={12}>
           <Form.Item
             name="position"
-            label="职位"
-            rules={[{ required: true, message: '请输入职位' }]}
+            label="Position"
+            rules={[{ required: true, message: '请输入Please enter your position' }]}
           >
             <Input />
           </Form.Item>
@@ -238,22 +238,22 @@ const UserProfile: React.FC = () => {
 
       <Form.Item
         name="department"
-        label="部门"
-        rules={[{ required: true, message: '请输入部门' }]}
+        label="Department"
+        rules={[{ required: true, message: 'Please enter your department' }]}
       >
         <Input />
       </Form.Item>
 
       <Form.Item>
         <Button type="primary" icon={<SaveOutlined />} htmlType="submit">
-          保存
+          Save
         </Button>
         <Button 
           onClick={() => setEditMode(false)} 
           icon={<CloseOutlined />}
           style={{ marginLeft: 8 }}
         >
-          取消
+          Cancel
         </Button>
       </Form.Item>
     </Form>
@@ -269,7 +269,7 @@ const UserProfile: React.FC = () => {
                 <Avatar size={100} src={userInfo.avatar} />
                 <div className={styles.uploadOverlay}>
                   <UploadOutlined />
-                  <span>更换头像</span>
+                  <span>Change Avatar</span>
                 </div>
               </div>
             </Upload>
@@ -286,19 +286,19 @@ const UserProfile: React.FC = () => {
       <Row gutter={[16, 16]}>
         <Col span={8}>
           <div className={styles.infoItem}>
-            <MailOutlined /> 邮箱
+            <MailOutlined /> Email
             <div>{userInfo.email}</div>
           </div>
         </Col>
         <Col span={8}>
           <div className={styles.infoItem}>
-            <PhoneOutlined /> 电话
+            <PhoneOutlined /> Phone
             <div>{userInfo.phone}</div>
           </div>
         </Col>
         <Col span={8}>
           <div className={styles.infoItem}>
-            <UserOutlined /> 部门
+            <UserOutlined /> Department
             <div>{userInfo.department}</div>
           </div>
         </Col>
@@ -310,7 +310,7 @@ const UserProfile: React.FC = () => {
         onClick={() => setEditMode(true)}
         style={{ marginTop: 16 }}
       >
-        编辑信息
+        Edit Profile
       </Button>
     </div>
   );
@@ -318,12 +318,12 @@ const UserProfile: React.FC = () => {
   const items = [
     {
       key: '1',
-      label: '个人信息',
+      label: 'Profile',
       children: editMode ? <ProfileForm /> : <ProfileInfo />
     },
     {
       key: '2',
-      label: '最近动态',
+      label: 'Recent Activities',
       children: (
         <List
           className={styles.activityList}

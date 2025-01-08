@@ -26,25 +26,25 @@ const TaskBoard: React.FC = () => {
   
   const [columns, setColumns] = useState<Column[]>([
     {
-      title: '待处理',
+      title: 'To Do',
       key: 'todo',
       tasks: [
-        { id: 1, title: '需求分析', description: '完成需求文档', assignee: '张三', priority: 'high' },
-        { id: 2, title: '系统设计', description: '完成系统架构设计', assignee: '李四', priority: 'medium' },
+        { id: 1, title: 'Requirement Analysis', description: 'Complete requirement documentation', assignee: 'John', priority: 'high' },
+        { id: 2, title: 'System Design', description: 'Complete system architecture design', assignee: 'Mike', priority: 'medium' },
       ],
     },
     {
-      title: '进行中',
+      title: 'In Progress',
       key: 'inProgress',
       tasks: [
-        { id: 3, title: '前端开发', description: '实现用户界面', assignee: '王五', priority: 'high' },
+        { id: 3, title: 'Frontend Development', description: 'Implement user interface', assignee: 'Tom', priority: 'high' },
       ],
     },
     {
-      title: '已完成',
+      title: 'Done',
       key: 'done',
       tasks: [
-        { id: 4, title: '项目启动', description: '项目启动会议', assignee: '张三', priority: 'medium' },
+        { id: 4, title: 'Project Kickoff', description: 'Project kickoff meeting', assignee: 'John', priority: 'medium' },
       ],
     },
   ]);
@@ -88,7 +88,7 @@ const TaskBoard: React.FC = () => {
     }
   };
 
-  const handleCreateTask = async (values: any) => {
+  const handleCreateTask = async (values: { title: string; description: string; assignee: string; priority: 'high' | 'medium' | 'low' }) => {
     const newTask: Task = {
       id: Math.max(...columns.flatMap(col => col.tasks.map(t => t.id))) + 1,
       title: values.title,
@@ -110,13 +110,13 @@ const TaskBoard: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h2>任务看板</h2>
+        <h2>Task Board</h2>
         <Button 
           type="primary" 
           icon={<PlusOutlined />}
           onClick={() => setIsModalVisible(true)}
         >
-          新建任务
+          Create Task
         </Button>
       </div>
 
@@ -157,7 +157,7 @@ const TaskBoard: React.FC = () => {
       </div>
 
       <Modal
-        title="新建任务"
+        title="Create Task"
         open={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
         onOk={() => form.submit()}
@@ -169,40 +169,40 @@ const TaskBoard: React.FC = () => {
         >
           <Form.Item
             name="title"
-            label="任务标题"
-            rules={[{ required: true, message: '请输入任务标题' }]}
+            label="Task Title"
+            rules={[{ required: true, message: 'Please enter task title' }]}
           >
             <Input />
           </Form.Item>
 
           <Form.Item
             name="description"
-            label="任务描述"
+            label="Task Description"
           >
             <Input.TextArea />
           </Form.Item>
 
           <Form.Item
             name="assignee"
-            label="负责人"
-            rules={[{ required: true, message: '请选择负责人' }]}
+            label="Assignee"
+            rules={[{ required: true, message: 'Please select assignee' }]}
           >
             <Select>
-              <Option value="张三">张三</Option>
-              <Option value="李四">李四</Option>
-              <Option value="王五">王五</Option>
+              <Option value="John">John</Option>
+              <Option value="Mike">Mike</Option>
+              <Option value="Tom">Tom</Option>
             </Select>
           </Form.Item>
 
           <Form.Item
             name="priority"
-            label="优先级"
-            rules={[{ required: true, message: '请选择优先级' }]}
+            label="Priority"
+            rules={[{ required: true, message: 'Please select priority' }]}
           >
             <Select>
-              <Option value="high">高</Option>
-              <Option value="medium">中</Option>
-              <Option value="low">低</Option>
+              <Option value="high">High</Option>
+              <Option value="medium">Medium</Option>
+              <Option value="low">Low</Option>
             </Select>
           </Form.Item>
         </Form>

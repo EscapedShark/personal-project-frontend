@@ -12,7 +12,7 @@ interface StatisticData {
 }
 
 const Dashboard: React.FC = () => {
-  // 这里可以使用实际的API调用来获取数据
+
   const statistics: StatisticData = {
     totalProjects: 12,
     activeProjects: 5,
@@ -22,12 +22,12 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>项目概览</h2>
+      <h2 className={styles.title}>Project Overview </h2>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={12} md={6}>
           <Card className={styles.card}>
             <Statistic
-              title="总项目数"
+              title="Total Projects"
               value={statistics.totalProjects}
               prefix={<ProjectOutlined />}
               valueStyle={{ color: '#3f8600' }}
@@ -37,7 +37,7 @@ const Dashboard: React.FC = () => {
         <Col xs={24} sm={12} md={6}>
           <Card className={styles.card}>
             <Statistic
-              title="进行中项目"
+              title="Projects In Progress" 
               value={statistics.activeProjects}
               prefix={<ClockCircleOutlined />}
               valueStyle={{ color: '#cf1322' }}
@@ -47,7 +47,7 @@ const Dashboard: React.FC = () => {
         <Col xs={24} sm={12} md={6}>
           <Card className={styles.card}>
             <Statistic
-              title="已完成项目"
+              title="Projects Completed"
               value={statistics.completedProjects}
               prefix={<CheckCircleOutlined />}
               valueStyle={{ color: '#3f8600' }}
@@ -57,7 +57,7 @@ const Dashboard: React.FC = () => {
         <Col xs={24} sm={12} md={6}>
           <Card className={styles.card}>
             <Statistic
-              title="团队成员"
+              title="Team Members"
               value={statistics.teamMembers}
               prefix={<TeamOutlined />}
             />
@@ -66,8 +66,8 @@ const Dashboard: React.FC = () => {
       </Row>
       
       <div className={styles.recentActivity}>
-        <h3>最近活动</h3>
-        {/* 这里可以添加最近活动列表或其他统计图表 */}
+        <h3>Recent activities</h3>
+        {/* Adding Tables or Forms */}
       </div>
     </div>
   );

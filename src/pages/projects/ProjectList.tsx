@@ -18,11 +18,11 @@ const ProjectList: React.FC = () => {
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState('');
 
-  // 模拟数据
+  // Mock data
   const projects: Project[] = [
     {
       id: 1,
-      name: '项目管理系统开发',
+      name: 'Project Management System Development',
       status: 'active',
       startDate: '2024-01-01',
       endDate: '2024-06-30',
@@ -30,7 +30,7 @@ const ProjectList: React.FC = () => {
     },
     {
       id: 2,
-      name: '客户管理系统升级',
+      name: 'Customer Management System Upgrade',
       status: 'pending',
       startDate: '2024-02-01',
       endDate: '2024-05-30',
@@ -38,7 +38,7 @@ const ProjectList: React.FC = () => {
     },
     {
       id: 3,
-      name: '数据分析平台',
+      name: 'Data Analysis Platform',
       status: 'completed',
       startDate: '2023-10-01',
       endDate: '2024-01-30',
@@ -48,7 +48,7 @@ const ProjectList: React.FC = () => {
 
   const columns = [
     {
-      title: '项目名称',
+      title: 'Project Name',
       dataIndex: 'name',
       key: 'name',
       render: (text: string, record: Project) => (
@@ -56,7 +56,7 @@ const ProjectList: React.FC = () => {
       ),
     },
     {
-      title: '状态',
+      title: 'Status',
       dataIndex: 'status',
       key: 'status',
       render: (status: string) => {
@@ -66,9 +66,9 @@ const ProjectList: React.FC = () => {
           completed: 'blue',
         };
         const texts = {
-          active: '进行中',
-          pending: '待开始',
-          completed: '已完成',
+          active: 'In Progress',
+          pending: 'Pending',
+          completed: 'Completed',
         };
         return (
           <Tag color={colors[status as keyof typeof colors]}>
@@ -78,28 +78,28 @@ const ProjectList: React.FC = () => {
       },
     },
     {
-      title: '开始日期',
+      title: 'Start Date',
       dataIndex: 'startDate',
       key: 'startDate',
     },
     {
-      title: '结束日期',
+      title: 'End Date',
       dataIndex: 'endDate',
       key: 'endDate',
     },
     {
-      title: '进度',
+      title: 'Progress',
       dataIndex: 'progress',
       key: 'progress',
       render: (progress: number) => `${progress}%`,
     },
     {
-      title: '操作',
+      title: 'Actions',
       key: 'action',
       render: (_: undefined, record: Project) => (
         <Space size="middle">
-          <a onClick={() => navigate(`/projects/${record.id}`)}>详情</a>
-          <a onClick={() => console.log('编辑', record.id)}>编辑</a>
+          <a onClick={() => navigate(`/projects/${record.id}`)}>Details</a>
+          <a onClick={() => console.log('Edit', record.id)}>Edit</a>
         </Space>
       ),
     },
@@ -109,13 +109,23 @@ const ProjectList: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <Input
-          placeholder="搜索项目"
+          placeholder="Search projects"
           prefix={<SearchOutlined />}
           onChange={e => setSearchText(e.target.value)}
           className={styles.searchInput}
         />
-        <Button type="primary" icon={<PlusOutlined />}>
-          新建项目
+        <Button
+          type="primary"
+          style={{
+          display: 'flex',
+          alignItems: 'center', 
+          justifyContent: 'center', 
+          lineHeight: '1', 
+          padding: '7.5px 12px', 
+          }}
+          icon={<PlusOutlined />}
+        >
+          New Project
         </Button>
       </div>
       <Table 

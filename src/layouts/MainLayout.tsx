@@ -23,51 +23,61 @@ const MainLayout = () => {
     {
       key: '/',
       icon: <DashboardOutlined />,
-      label: '仪表盘',
+      label: 'Dashboard',
     },
     {
       key: '/projects',
       icon: <ProjectOutlined />,
-      label: '项目管理',
+      label: 'Projects',
     },
     {
       key: '/tasks',
       icon: <TagsOutlined />,
-      label: '任务面板',
+      label: 'Task Board',
     },
     {
       key: '/profile',
       icon: <UserOutlined />,
-      label: '个人中心',
+      label: 'Profile',
     },
   ];
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="logo" style={{ height: 32, margin: 16, background: 'rgba(255, 255, 255, 0.2)' }} />
         <Menu
           theme="dark"
           mode="inline"
           defaultSelectedKeys={['/']}
           items={menuItems}
           onClick={({ key }) => navigate(key)}
+          style={{ marginTop: '48px' }}  
         />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }}>
+      <Header 
+        style={{ 
+          padding: 0, 
+          background: colorBgContainer,
+          display: 'flex',  
+          justifyContent: 'space-between',  
+          alignItems: 'center' 
+        }}
+      >
           {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
             className: 'trigger',
             onClick: () => setCollapsed(!collapsed),
             style: { fontSize: '18px', padding: '0 24px', cursor: 'pointer' },
           })}
+
+
         </Header>
         <Content
           style={{
             margin: '24px 16px',
             padding: 24,
             background: colorBgContainer,
-            minHeight: 280,
+            minHeight: 180,
           }}
         >
           <Outlet />

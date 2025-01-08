@@ -15,18 +15,18 @@ const Login: React.FC = () => {
 
   const onFinish = async (values: LoginFormData) => {
     try {
-      // 这里添加实际的登录逻辑
-      console.log('登录信息:', values);
-      message.success('登录成功！');
+      // Add actual login logic here
+      console.log('Login information:', values);
+      message.success('Login successful!');
       navigate('/');
     } catch {
-      message.error('登录失败，请重试！');
+      message.error('Login failed, please try again!');
     }
   };
 
   return (
     <div className={styles.container}>
-      <Card className={styles.loginCard} title="项目管理系统">
+      <Card className={styles.loginCard} title="Project Management System">
         <Form
           name="login"
           initialValues={{ remember: true }}
@@ -35,29 +35,29 @@ const Login: React.FC = () => {
         >
           <Form.Item
             name="username"
-            rules={[{ required: true, message: '请输入用户名！' }]}
+            rules={[{ required: true, message: 'Please enter username!' }]}
           >
             <Input 
               prefix={<UserOutlined />} 
-              placeholder="用户名" 
+              placeholder="Username" 
               size="large" 
             />
           </Form.Item>
 
           <Form.Item
             name="password"
-            rules={[{ required: true, message: '请输入密码！' }]}
+            rules={[{ required: true, message: 'Please enter password!' }]}
           >
             <Input.Password
               prefix={<LockOutlined />}
-              placeholder="密码"
+              placeholder="Password"
               size="large"
             />
           </Form.Item>
 
           <Form.Item>
             <Button type="primary" htmlType="submit" className={styles.loginButton} size="large">
-              登录
+              Log In
             </Button>
           </Form.Item>
         </Form>
