@@ -1,4 +1,5 @@
 # 个人项目管理系统 (Frontend)
+[English](README.md) | [简体中文](README.zh-CN.md)
 
 一个基于 React + TypeScript 的现代化项目管理系统前端实现。
 
@@ -32,7 +33,7 @@
 
 ```bash
 # 克隆项目
-git clone [项目地址]
+git clone https://github.com/EscapedShark/personal-project-frontend.git
 
 # 进入项目目录
 cd project-name

@@ -1,4 +1,5 @@
 # Personal Project Management System (Frontend)
+[English](README.md) | [简体中文](README.zh-CN.md)
 
 A modern project management system frontend implementation based on React + TypeScript.
 
@@ -32,7 +33,7 @@ A modern project management system frontend implementation based on React + Type
 
 ```bash
 # Clone the project
-git clone [project-url]
+git clone https://github.com/EscapedShark/personal-project-frontend.git
 
 # Enter project directory
 cd project-name
